@@ -1,4 +1,5 @@
 mod day1;
+mod day2;
 mod util;
 
 use std::env;
@@ -10,6 +11,9 @@ fn main() {
         None => run_all(),
         Some(exercise) => match exercise.as_ref() {
             "d1p1" => run_one(day1::part1),
+            "d1p2" => run_one(day1::part2),
+            "d2p1" => run_one(day2::part1),
+            "d2p2" => run_one(day2::part2),
             _ => panic!("unknown exercise: {}", exercise),
         },
     }
@@ -24,9 +28,27 @@ fn run_all() {
         "day1::part1 failed!"
     );
 
+    assert_eq!(
+        232_508_760,
+        run_one_and_return("day1::part2", day1::part2),
+        "day1::part2 failed!"
+    );
+
+    assert_eq!(
+        418,
+        run_one_and_return("day2::part1", day2::part1),
+        "day2::part1 failed!"
+    );
+
+    assert_eq!(
+        616,
+        run_one_and_return("day2::part2", day2::part2),
+        "day2::part2 failed!"
+    );
+
     println!("Total elapsed time: {:?}", Instant::elapsed(&start));
 }
-
+e
 fn run_one(exercise: fn() -> i64) {
     let now = Instant::now();
 
