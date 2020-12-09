@@ -2,7 +2,7 @@ use crate::util;
 use regex::Regex;
 
 pub fn part1() -> i64 {
-    let passports = squash_passports("data/d4.txt");
+    let passports = util::squash_stanzas("data/d4.txt");
 
     let expected_fields = vec![
         Regex::new(r"\bbyr:").unwrap(),
@@ -28,7 +28,7 @@ pub fn part1() -> i64 {
 }
 
 pub fn part2() -> i64 {
-    let passports = squash_passports("data/d4.txt");
+    let passports = util::squash_stanzas("data/d4.txt");
 
     let expected_fields = vec![
         Regex::new(r"\bbyr:(19[2-9]\d|200[0-2])\b").unwrap(), // four digits; at least 1920
@@ -59,25 +59,4 @@ pub fn part2() -> i64 {
     }
 
     correct
-}
-
-fn squash_passports(filepath: &str) -> Vec<String> {
-    let lines = util::lines_from_path(filepath);
-    let mut passports = vec![];
-    let mut current = String::new();
-
-    for line in lines {
-        let s = line.unwrap();
-        if s.is_empty() {
-            passports.push(current.clone());
-            current.clear();
-        } else {
-            current.push_str(" ");
-            current.push_str(&s);
-        }
-    }
-
-    // Make sure we don't lose the last one
-    passports.push(current);
-    passports
 }
