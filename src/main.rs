@@ -4,6 +4,8 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
+mod day9;
 mod util;
 
 use std::env;
@@ -26,6 +28,8 @@ fn main() {
             "d5p2" => run_one(day5::part2),
             "d6p1" => run_one(day6::part1),
             "d6p2" => run_one(day6::part2),
+            "d7p1" => run_one(day7::part1),
+            "d7p2" => run_one(day7::part2),
             _ => panic!("unknown exercise: {}", exercise),
         },
     }
@@ -104,6 +108,18 @@ fn run_all() {
         3585,
         run_one_and_return("day6::part2", day6::part2),
         "day6::part2 failed!"
+    );
+
+    assert_eq!(
+        233,
+        run_one_and_return("day7::part1", day7::part1),
+        "day7::part1 failed!"
+    );
+
+    assert_eq!(
+        421550,
+        run_one_and_return("day7::part2", day7::part2),
+        "day7::part2 failed!"
     );
 
     println!("Total elapsed time: {:?}", Instant::elapsed(&start));
