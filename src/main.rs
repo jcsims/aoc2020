@@ -5,6 +5,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 mod day9;
 mod util;
 
@@ -30,6 +31,8 @@ fn main() {
             "d6p2" => run_one(day6::part2),
             "d7p1" => run_one(day7::part1),
             "d7p2" => run_one(day7::part2),
+            "d8p1" => run_one(day8::part1),
+            "d8p2" => run_one(day8::part2),
             _ => panic!("unknown exercise: {}", exercise),
         },
     }
@@ -120,6 +123,18 @@ fn run_all() {
         421550,
         run_one_and_return("day7::part2", day7::part2),
         "day7::part2 failed!"
+    );
+
+    assert_eq!(
+        1709,
+        run_one_and_return("day8::part1", day8::part1),
+        "day8::part1 failed!"
+    );
+
+    assert_eq!(
+        1976,
+        run_one_and_return("day8::part2", day8::part2),
+        "day8::part2 failed!"
     );
 
     println!("Total elapsed time: {:?}", Instant::elapsed(&start));
