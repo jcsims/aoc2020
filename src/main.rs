@@ -13,7 +13,6 @@ use std::env;
 use std::time::Instant;
 
 fn main() {
-    env_logger::init();
     match env::args().nth(1) {
         None => run_all(),
         Some(exercise) => match exercise.as_ref() {
@@ -33,6 +32,8 @@ fn main() {
             "d7p2" => run_one(day7::part2),
             "d8p1" => run_one(day8::part1),
             "d8p2" => run_one(day8::part2),
+            "d9p1" => run_one(day9::part1),
+            "d9p2" => run_one(day9::part2),
             _ => panic!("unknown exercise: {}", exercise),
         },
     }
@@ -135,6 +136,18 @@ fn run_all() {
         1976,
         run_one_and_return("day8::part2", day8::part2),
         "day8::part2 failed!"
+    );
+
+    assert_eq!(
+        41_682_220,
+        run_one_and_return("day9::part1", day9::part1),
+        "day9::part1 failed!"
+    );
+
+    assert_eq!(
+        5_388_976,
+        run_one_and_return("day9::part2", day9::part2),
+        "day9::part2 failed!"
     );
 
     println!("Total elapsed time: {:?}", Instant::elapsed(&start));
